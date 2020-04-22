@@ -18,8 +18,8 @@ class Users(models.Model):
 
     notification_type = fields.Selection([
         ('email', 'Handle by Emails'),
-        ('inbox', 'Handle in Planet Odoo')],
+        ('inbox', 'Handle in SensyERP')],
         'Notification Management', required=True, default='email',
         help="Policy on how to handle Chatter notifications:\n"
              "- Emails: notifications are sent to your email\n"
-             "- Planet Odoo: notifications appear in your Planet Odoo Inbox")
+             "- SensyERP: notifications appear in your SensyERP Inbox")

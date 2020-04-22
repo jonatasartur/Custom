@@ -5,7 +5,7 @@ odoo.define('backend_debranding.dialog', function(require) {
     var rpc = require('web.rpc');
 //    var Model = require('web.DataModel')
 //    var debranding_new_name = 'Ctotal';
-    var debranding_new_name = 'Planet Odoo';
+    var debranding_new_name = 'SensyMed';
 //            var model = new Model("ir.config_parameter");
             var r = rpc.query({
                     model: 'ir.config_parameter',
