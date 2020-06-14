@@ -19,10 +19,10 @@ class MailTemplate(models.Model):
         using_word = _('using')
         # print(body)
         body=re.sub(
-            _('Odoo') , "SensyMed", body,
+            _('Odoo') , "JDias", body,
         )
         return re.sub(
-             'https://www.odoo.com','http://www.sensymed.com.br/', body,
+             'https://www.odoo.com','http://www.google.com.br/', body,
         )
 
     @api.model

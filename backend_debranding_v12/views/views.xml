@@ -31,11 +31,11 @@
     <data noupdate="1">
         <record id="custom_help" model="ir.config_parameter">
             <field name="key">backend_debranding_v12.new_name</field>
-            <field name="value">SensyMed</field>
+            <field name="value">JDias</field>
         </record>
         <record id="custom_title" model="ir.config_parameter">
             <field name="key">backend_debranding_v12.new_title</field>
-            <field name="value">SensyMed</field>
+            <field name="value">JDias</field>
         </record>
         <record id="favicon" model="ir.config_parameter">
             <field name="key">backend_debranding_v12.favicon_url</field>
@@ -43,7 +43,7 @@
         </record>
         <record id="custom_person" model="ir.config_parameter">
             <field name="key">backend_debranding_v12.planner_footer</field>
-            <field name="value">SensyMed</field>
+            <field name="value">JDias</field>
         </record>
     </data>
 </odoo>
