@@ -15,15 +15,15 @@ and open the template in the editor.
         </template>
 
 
-        <template id="frontend_layout" inherit_id="portal.frontend_layout" name="Frontend Layout">
+        <!--<template id="frontend_layout" inherit_id="portal.frontend_layout" name="Frontend Layout">-->
             <!--<xpath expr="//img[@t-att-title='res_company.name']" position="replace">-->
                 <!--<img src="/logo.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>-->
             <!--</xpath>-->
-            <xpath expr="//a[@class='navbar-brand logo']" position="replace">
+            <!--<xpath expr="//a[@class='navbar-brand logo']" position="replace">
                 <a href="/" class="navbar-brand logo">
                 <img src="/logo.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
                 </a>
-            </xpath>
+            </xpath>-->
             <!--<xpath expr="//footer[hasclass('o_footer')]" position="replace">-->
                 <!--<div class="container mt16 mb16" id="footer">-->
                         <!--<div class="float-right mb16" t-ignore="true" t-if="not editable">-->
@@ -38,7 +38,7 @@ and open the template in the editor.
                         <!--</div>-->
                     <!--</div>-->
             <!--</xpath>-->
-        </template>
+        <!--</template>-->
 
 
         <!--<template id="web_menu_secondary_inherit" inherit_id="web.menu_secondary" name="Secondary Menu1">-->
