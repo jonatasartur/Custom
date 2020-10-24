@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Database auto-backup",
+    'name': "Database Auto-Backupy",
 
-    'summary': 'Automated backups',
+    'summary': 'Automated Backups',
 
     'description': """The Database Auto-Backup module enables the user to make configurations for the automatic backup of the database. Backups can be taken on the local system or on a remote server, through SFTP.
 You only have to specify the hostname, port, backup location and databasename (all will be pre-filled by default with correct data.
@@ -18,7 +18,7 @@ Automatic backup for all such configured databases can then be scheduled as foll
 """,
 
     'author': "Yenthe Van Ginneken",
-    'website': "http:/www.odoo.yenthevg.com",
+    'website': "http://www.odoo.yenthevg.com",
     'category': 'Administration',
     'version': '12.0.0.1',
     'installable': True,

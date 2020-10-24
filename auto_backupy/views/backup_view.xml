@@ -69,7 +69,7 @@ background-repeat: no-repeat;background-position: 10px center;color: #9F6000;bac
                         </ol>
                         <p style="font-size:18px;">
                             Need more help?
-                            <a href="https://github.com/Yenthe666/auto_backup">Contact me!</a>
+                            <a href="https://github.com/Yenthe666/auto_backupy">Contact me!</a>
                         </p>
                     </div>
                     </sheet>
@@ -101,7 +101,7 @@ background-repeat: no-repeat;background-position: 10px center;color: #9F6000;bac
             <field name="view_id" ref="view_backup_config_tree"/>
         </record>
 
-        <menuitem id="auto_backup_menu" name="Back-ups" parent="base.menu_custom"/>
-        <menuitem parent="auto_backup_menu" action="action_backup" id="backup_conf_menu"/>
+        <menuitem id="auto_backupy_menu" name="Back-ups" parent="base.menu_custom"/>
+        <menuitem parent="auto_backupy_menu" action="action_backup" id="backup_conf_menu"/>
     </data>
 </odoo>

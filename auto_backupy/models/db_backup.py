@@ -19,6 +19,7 @@ import time
 import base64
 import socket
 
+import stat
 
 try:
     import paramiko
@@ -232,6 +233,7 @@ class db_backup(models.Model):
                     # Navigate in to the correct folder.
                     sftp.chdir(pathToWriteTo)
 
+                    _logger.debug("Checking expired files")
                     # Loop over all files in the directory from the back-ups.
                     # We will check the creation date of every back-up.
                     for file in sftp.listdir(pathToWriteTo):
@@ -239,20 +241,26 @@ class db_backup(models.Model):
                             # Get the full path
                             fullpath = os.path.join(pathToWriteTo, file)
                             # Get the timestamp from the file on the external server
-                            timestamp = sftp.stat(fullpath).st_atime
+                            timestamp = sftp.stat(fullpath).st_mtime
                             createtime = datetime.datetime.fromtimestamp(timestamp)
                             now = datetime.datetime.now()
                             delta = now - createtime
                             # If the file is older than the days_to_keep_sftp (the days to keep that the user filled in on the Odoo form it will be removed.
                             if delta.days >= rec.days_to_keep_sftp:
                                 # Only delete files, no directories!
-                                if sftp.isfile(fullpath) and (".dump" in file or '.zip' in file):
+                                if stat.S_ISREG(sftp.stat(fullpath).st_mode) and (".dump" in file or '.zip' in file):
                                     _logger.info("Delete too old file from SFTP servers: " + file)
                                     sftp.unlink(file)
                     # Close the SFTP session.
                     sftp.close()
+                    s.close()
                 except Exception as e:
-                    _logger.debug('Exception! We couldn\'t back up to the FTP server..')
+                    try:
+                        sftp.close()
+                        s.close()
+                    except:
+                        pass
+                    _logger.error('Exception! We couldn\'t back up to the FTP server. Here is what we got back instead: %s' % str(e))
                     # At this point the SFTP backup failed. We will now check if the user wants
                     # an e-mail notification about this.
                     if rec.send_mail_sftp_fail:
@@ -260,7 +268,7 @@ class db_backup(models.Model):
                             ir_mail_server = self.env['ir.mail_server']
                             message = "Dear,\n\nThe backup for the server " + rec.host + " (IP: " + rec.sftp_host + ") failed.Please check the following details:\n\nIP address SFTP server: " + rec.sftp_host + "\nUsername: " + rec.sftp_user + "\nPassword: " + rec.sftp_password + "\n\nError details: " + tools.ustr(
                                 e) + "\n\nWith kind regards"
-                            msg = ir_mail_server.build_email("auto_backup@" + rec.name + ".com", [rec.email_to_notify],
+                            msg = ir_mail_server.build_email("auto_backupy@" + rec.name + ".com", [rec.email_to_notify],
                                                              "Backup from " + rec.host + "(" + rec.sftp_host + ") failed",
                                                              message)
                             ir_mail_server.send_email(self._cr, self._uid, msg)
